@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "role": "Admin",
+      "email": "hitesh@gmail.com",
+      "password": "123",
+      "id": "2337"
+    },
+    {
+      "id": "aba5",
+      "email": "chirag@gmail.com",
+      "password": "123",
+      "role": "Admin"
+    },
+    {
+      "id": "abaf5",
+      "email": "harsh@gmail.com",
+      "password": "123",
+      "role": "User"
+    },
+    {
+      "id": "5420",
+      "email": "siddh@gmail.com",
+      "password": "123",
+      "role": "User"
+    },
+    {
+      "id": "LSar_w4",
+      "email": "hetvi@gmail.com",
+      "password": "123",
+      "role": "User"
+    }
+  ],
+  "api": []
+}
