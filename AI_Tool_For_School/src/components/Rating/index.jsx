@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./style.less"
 
 export const Rating = ({ rating, onRatingChange }) => {

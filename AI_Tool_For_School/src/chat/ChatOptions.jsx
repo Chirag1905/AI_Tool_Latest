@@ -27,7 +27,7 @@ export function ConfigHeader() {
   )
 }
 
-export default function ChatOptions() {
+export default function ChatOpitons() {
   const { options } = useGlobal()
   const { account, openai, general } = options
   const { setIs, is } = useGlobal()
@@ -89,10 +89,10 @@ export default function ChatOptions() {
                 <Input value={openai.baseUrl} placeholder="Api Base Url" onChange={val => setModel({ baseUrl: val })} />
               </Panel.Item>
               <Panel.Item icon="link" title="Top P" desc="Custom top_p.">
-                 <Input type="number" value={openai.top_p} placeholder="Custom top_p." onChange={val => setModel({ top_p: +val })} />
+                <Input type="number" value={openai.top_p} placeholder="Custom top_p." onChange={val => setModel({ top_p: +val })} />
               </Panel.Item>
             </Panel>
-            <Panel title="User Management">
+              <Panel title="User Management">
                 <Panel.Item  className="btn-manage-user" icon="" title="Manage User" desc="" onClick={() => setIs({ ChatRegister: !is.ChatRegister })} />
                 <Panel.Item  className="btn-manage-user" icon="" title="API Keys" desc="" onClick={() => setIs({ ChatApi: !is.ChatApi })} />
               </Panel>
