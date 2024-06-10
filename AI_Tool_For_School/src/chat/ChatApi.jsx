@@ -10,7 +10,7 @@ import { IoMdCheckmark } from "react-icons/io";
 import Loadding from "./Loadding";
 import axios from "axios";
 import styles from './style/chatoptionsconfig.module.less';
-import './style/chatregister.less';
+import './style/chatregisterapi.less';
 
 export function ConfigHeader() {
     const { setIs, is } = useGlobal()
