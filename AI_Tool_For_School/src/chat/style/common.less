@@ -58,28 +58,25 @@
 }
 
 [data-theme="dark"] {
-  // --background-color-gray: #121212;
-  // --background-color: #202020;
-  // --border-color: #353535;
-  // --text-color: #f6f6f6;
-  // --text-color-gray: #656565;
-
-  // --background-color-gray: #292c34;
   --background-color: #2e323a;
   --background-color-gray: #282c34;
   --border-color: #181a21;
   --text-color: #dfe2eb;
   --text-color-gray: #a7acbb;
 }
+
 [data-size="small"] {
   --font-size-base: 12px;
 }
+
 [data-size="middle"] {
   --font-size-base: 13px;
 }
+
 [data-size="default"] {
   --font-size-base: 14px;
 }
+
 [data-size="large"] {
   --font-size-base: 16px;
 }
@@ -87,6 +84,7 @@
 html {
   background-color: var(--background-color-gray);
 }
+
 * {
   vertical-align: baseline;
   font-weight: inherit;
@@ -110,10 +108,12 @@ textarea {
     color: var(--text-color-gray);
   }
 }
+
 body {
   font-family: sans-serif;
   color: var(--text-color);
 }
+
 .flex {
   display: flex;
   &-c {
@@ -136,5 +136,58 @@ body {
   }
   &-1 {
     flex: 1;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  :root {
+    --font-size-h1: 22px;
+    --font-size-h2: 18px;
+    --font-size-h3: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  :root {
+    --font-size-h1: 20px;
+    --font-size-h2: 16px;
+    --font-size-h3: 14px;
+  }
+  .flex {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-h1: 18px;
+    --font-size-h2: 14px;
+    --font-size-h3: 12px;
+  }
+  input,
+  select,
+  textarea {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --spacing: 5px;
+    --spacing-large: 10px;
+    --spacing-min: 2px;
+    --font-size-h1: 16px;
+    --font-size-h2: 14px;
+    --font-size-h3: 12px;
+  }
+  .flex {
+    flex-direction: column;
+  }
+  .flex-c {
+    align-items: flex-start;
+  }
+  .flex-column {
+    flex-direction: column;
   }
 }

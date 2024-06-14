@@ -39,13 +39,11 @@ export default function ChatApi() {
     const handleApi = async (e) => {
         e.preventDefault();
         try {
-            // const response = await axios.post("http://localhost:8000/api", {
             const response = await axios.post(`${apiUrl}/api`, {
                 ...apiData
             }, {
                 headers: { "Content-Type": "application/json" }
             });
-
             if (response?.status === 201 || response?.status === 200) {
                 toast?.success("API added successfully");
                 setApiData({ apiKey: "" });
@@ -61,7 +59,6 @@ export default function ChatApi() {
     //Listing Apikey
     const handleListings = async () => {
         try {
-            // const response = await axios.get("http://localhost:8000/api");
             const response = await axios.get(`${apiUrl}/api`);
             setListings(response?.data);
         } catch (error) {
@@ -78,7 +75,7 @@ export default function ChatApi() {
     };
     const handleUpdate = async (id) => {
         try {
-            const response = await axios.patch(`http://localhost:8000/api/${id}`, {
+            const response = await axios.patch(`${apiUrl}/api/${id}`, {
                 apiKey: editApi.apiKey,
             }, {
                 headers: { "Content-Type": "application/json" }
@@ -99,7 +96,7 @@ export default function ChatApi() {
     //Deleting Apikey
     const handleDelete = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/api/${id}`);
+            const response = await axios.delete(`${apiUrl}/api/${id}`);
             if (response?.status === 200 || response?.status === 204) {
                 toast.error("API deleted successfully");
                 setListings(listings?.filter(apidata => apidata.id !== id));

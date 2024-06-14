@@ -29,6 +29,12 @@
       "email": "hetvi@gmail.com",
       "password": "123",
       "role": "User"
+    },
+    {
+      "email": "het@gmail.com",
+      "password": "123",
+      "role": "User",
+      "id": "FfY8TLf"
     }
   ],
   "api": []

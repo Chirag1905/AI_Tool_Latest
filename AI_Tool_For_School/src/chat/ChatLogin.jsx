@@ -14,20 +14,14 @@ export default function ChatLogin() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            // const response = await axios.get("http://localhost:8000/users", {
-                const response = await axios.get(`${apiUrl}/users`, {
+            const response = await axios.get(`${apiUrl}/users`, {
                 headers: { "Content-Type": "application/json" },
             });
-
             if (response.status !== 200) {
                 throw new Error("Failed to fetch user data");
             }
-
             const users = response.data;
-
-            // Find user with matching email
             const user = users.find((user) => user.email === email);
             if (!user) {
                 toast.warn("User not found");
@@ -37,9 +31,7 @@ export default function ChatLogin() {
                 toast.error("Incorrect password");
                 return;
             }
-
             localStorage.setItem("userData", JSON.stringify(user));
-
             toast.success("Login successful");
             setShowChat(true);
         } catch (error) {
@@ -47,7 +39,7 @@ export default function ChatLogin() {
         }
     };
     return (
-        <Suspense fallback={<Loadding/>}>
+        <Suspense fallback={<Loadding />}>
             <ToastContainer draggable theme="colored" />
             {showChat ? (
                 <ChatApp />

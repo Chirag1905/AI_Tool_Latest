@@ -38,7 +38,6 @@ export default function ChatRegister() {
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            // const usersResponse = await axios.get(`https://json-server2-one.vercel.app/users`);
             const usersResponse = await axios.get(`${apiUrl}/users`);
             if (usersResponse?.status !== 200) throw new Error("Failed to fetch user data");
 
@@ -47,8 +46,6 @@ export default function ChatRegister() {
                 toast?.warn("User Already Exists");
                 return;
             }
-
-            // const response = await axios.post(`https://json-server2-one.vercel.app/users`,
             const response = await axios.post(`${apiUrl}/users`,
                 { ...formData, role: "User" },
                 { headers: { "Content-Type": "application/json" } });
@@ -59,7 +56,6 @@ export default function ChatRegister() {
             } else {
                 throw new Error("Failed to register user");
             }
-
         } catch (error) {
             toast?.error("Registration error");
         }
@@ -67,7 +63,6 @@ export default function ChatRegister() {
 
     const handleListings = async () => {
         try {
-            // const response = await axios.get(`https://json-server2-one.vercel.app/users`);
             const response = await axios.get(`${apiUrl}/users`);
             setListings(response?.data);
         } catch (error) {
@@ -85,7 +80,6 @@ export default function ChatRegister() {
 
     const handleUpdate = async (id) => {
         try {
-            // const response = await axios.patch(`https://json-server2-one.vercel.app/users/${id}`, {
             const response = await axios.patch(`${apiUrl}/users/${id}`, {
                 email: editData.email,
                 password: editData.password,
@@ -105,7 +99,6 @@ export default function ChatRegister() {
 
     const handleDelete = async (id) => {
         try {
-            // const response = await axios.delete(`https://json-server2-one.vercel.app/users/${id}`);
             const response = await axios.delete(`${apiUrl}/users/${id}`);
             if (response?.status === 200) {
                 toast?.error("User deleted successfully");
