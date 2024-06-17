@@ -9,7 +9,7 @@ import imageUrl from '../assets/images/avatar.png'
 import styles from './style/chatsidebar.module.less';
 
 export default function ChatSideBar() {
-    const { is, setState, options } = useGlobal();
+    const { is, setState, options, logout } = useGlobal();
     const { setGeneral } = useOptions();
     // const { options.general.theme } = props;
     return (
@@ -27,8 +27,10 @@ export default function ChatSideBar() {
                         type='push-right'
                         onClick={() => {
                             setState({ is: { ...is, config: false, ChatRegister: false, ChatApi: false } });
-                            localStorage.removeItem("userData");
-                            location.reload();
+                            // localStorage.removeItem("SESSIONS");
+                            // localStorage.removeItem("userData");
+                            // location.reload();
+                            logout();
                             // setState({ is: { ...is, config: !is.config, register: false } })
                         }}
                     />

@@ -35,6 +35,22 @@
       "password": "123",
       "role": "User",
       "id": "FfY8TLf"
+    },
+    {
+      "schoolId": "1",
+      "schoolName": "shayona ",
+      "email": "sid@gmail.com",
+      "password": "123",
+      "role": "User",
+      "id": "HWbl3S_"
+    },
+    {
+      "schoolId": "",
+      "schoolName": "",
+      "email": "c@gmail.com",
+      "password": "123",
+      "role": "User",
+      "id": "DSp23vS"
     }
   ],
   "api": []

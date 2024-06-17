@@ -27,8 +27,8 @@ export function ConfigHeader() {
 
 export default function ChatRegister() {
     const apiUrl = import.meta.env.VITE_API_BASE_URL;
-    const [formData, setFormData] = useState({ email: "", password: "" });
-    const [editData, setEditData] = useState({ id: null, email: "", password: "", role: "" });
+    const [formData, setFormData] = useState({ schoolId: "", schoolName: "", email: "", password: "" });
+    const [editData, setEditData] = useState({ id: null, schoolId: "", schoolName: "", email: "", password: "", role: "" });
     const [listings, setListings] = useState([]);
 
     useEffect(() => {
@@ -51,7 +51,7 @@ export default function ChatRegister() {
                 { headers: { "Content-Type": "application/json" } });
             if (response?.status === 201 || response?.status === 200) {
                 toast?.success("Registration successful");
-                setFormData({ email: "", password: "" });
+                setFormData({ schoolId: "", schoolName: "", email: "", password: "" });
                 handleListings();
             } else {
                 throw new Error("Failed to register user");
@@ -71,16 +71,18 @@ export default function ChatRegister() {
     };
 
     const handleEditClick = (user) => {
-        setEditData({ id: user.id, email: user.email, password: user.password, role: user.role });
+        setEditData({ id: user.id, schoolId: "", schoolName: "", email: user.email, password: user.password, role: user.role });
     };
 
     const handleCancelEdit = () => {
-        setEditData({ id: null, email: "", password: "", role: "" });
+        setEditData({ id: null, schoolId: "", schoolName: "", email: "", password: "", role: "" });
     };
 
     const handleUpdate = async (id) => {
         try {
             const response = await axios.patch(`${apiUrl}/users/${id}`, {
+                schoolId: editData.schoolId,
+                schoolName: editData.schoolName,
                 email: editData.email,
                 password: editData.password,
                 role: editData.role
@@ -124,7 +126,32 @@ export default function ChatRegister() {
                                         <h5 className="card-title">Add Users</h5>
                                         <form className="form-inline" onSubmit={handleRegister}>
                                             <div className="form-inline d-flex">
-                                                <div className="input-group mr-10">
+
+                                                <div className="input-group">
+                                                    <label className="sr-only" >School Id</label>
+                                                    <input
+                                                        name="number"
+                                                        type="number"
+                                                        autoComplete="number"
+                                                        className="form-control"
+                                                        placeholder="Enter your schoolId"
+                                                        value={formData.schoolId}
+                                                        onChange={(e) => setFormData({ ...formData, schoolId: e.target.value })}
+                                                    />
+                                                </div>
+                                                <div className="input-group">
+                                                    <label className="sr-only" >School Name</label>
+                                                    <input
+                                                        name="text"
+                                                        type="text"
+                                                        autoComplete="text"
+                                                        className="form-control"
+                                                        placeholder="Enter your schoolName"
+                                                        value={formData.schoolName}
+                                                        onChange={(e) => setFormData({ ...formData, schoolName: e.target.value })}
+                                                    />
+                                                </div>
+                                                <div className="input-group">
                                                     <label className="sr-only" >Email</label>
                                                     <input
                                                         name="email"
@@ -159,6 +186,8 @@ export default function ChatRegister() {
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
+                                                            <th>School Id</th>
+                                                            <th>School Name</th>
                                                             <th>Email</th>
                                                             <th>Password</th>
                                                             <th>Roll</th>
@@ -169,6 +198,30 @@ export default function ChatRegister() {
                                                         {listings.map((user, index) => (
                                                             <tr key={index}>
                                                                 <td>{index + 1}</td>
+                                                                <td>
+                                                                    {editData.id === user.id ? (
+                                                                        <input
+                                                                            type="email"
+                                                                            className="form-control"
+                                                                            value={editData.schoolId}
+                                                                            onChange={(e) => setEditData({ ...editData, schoolId: e.target.value })}
+                                                                        />
+                                                                    ) : (
+                                                                        user.schoolId
+                                                                    )}
+                                                                </td>
+                                                                <td>
+                                                                    {editData.id === user.id ? (
+                                                                        <input
+                                                                            type="email"
+                                                                            className="form-control"
+                                                                            value={editData.schoolName}
+                                                                            onChange={(e) => setEditData({ ...editData, schoolName: e.target.value })}
+                                                                        />
+                                                                    ) : (
+                                                                        user.schoolName
+                                                                    )}
+                                                                </td>
                                                                 <td>
                                                                     {editData.id === user.id ? (
                                                                         <input

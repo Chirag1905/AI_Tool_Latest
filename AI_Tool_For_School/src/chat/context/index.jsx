@@ -1,10 +1,4 @@
-import React, {
-  useRef,
-  useEffect,
-  useReducer,
-  useContext,
-  createContext,
-} from "react";
+import React, { useRef, useEffect, useReducer, useContext, createContext } from "react";
 import action from "./action";
 import reducer from "./reducer";
 import { initState } from "./initState";
@@ -31,11 +25,18 @@ export const ChatProvider = ({ children }) => {
 
   useEffect(() => {
     const stateToSave = latestState.current;
-    localStorage.setItem("SESSIONS", JSON.stringify(stateToSave));
+    localStorage.getItem("userData") && localStorage.setItem("SESSIONS", JSON.stringify(stateToSave));
   }, [latestState.current]);
 
+  const logout = () => {
+    localStorage.removeItem("SESSIONS");
+    localStorage.removeItem("userData");
+    dispatch({ type: "RESET_STATE" });
+    location.reload();
+  };
+
   return (
-    <ChatContext.Provider value={{ ...state, ...actionList }}>
+    <ChatContext.Provider value={{ ...state, ...actionList, logout }}>
       <MessagesContext.Provider value={dispatch}>
         {children}
       </MessagesContext.Provider>
