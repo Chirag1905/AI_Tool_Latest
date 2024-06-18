@@ -3,6 +3,7 @@
   margin-right: auto;
   max-width: 1140px;
   padding-right: 15px;
+  padding-left: 15px;
 }
 
 .row {
@@ -28,7 +29,6 @@
   border-radius: 0;
   justify-content: center;
   align-items: center;
-
 }
 
 .card-body {
@@ -39,7 +39,6 @@
 .card-title {
   text-transform: uppercase;
   margin-bottom: 0;
-  // margin-left: 10px;
   font-weight: bold;
   font-size: 20px;
 }
@@ -51,13 +50,13 @@
   border-collapse: collapse;
 }
 .user-table tbody {
-  max-height: 300px; /* Adjust the height as needed */
+  max-height: 300px;
   overflow-y: auto;
 }
 
 .user-table th,
 .user-table td {
-  padding:  1rem 3rem 1rem 0;
+  padding: 1rem 3rem 1rem 0;
   vertical-align: top;
   text-align: center;
   border-top: 1px solid var(--background-color-gray);
@@ -78,7 +77,7 @@
   font-size: 1rem;
   line-height: 1.5;
   color: #17a2b8;
-  background-color:var(--background-color-gray);
+  background-color: var(--background-color-gray);
   background-clip: padding-box;
   border: 1px solid #17a2b8;
   border-radius: 0.25rem;
@@ -127,10 +126,12 @@
   border-radius: 10px;
   background-color: var(--background-color-gray);
 }
-.form-inline{
+
+.form-inline {
   gap: 20px;
   padding: 10px 0 20px 0px;
   align-items: end;
+  flex-wrap: wrap;
 }
 
 .form-inline .form-control {
@@ -174,7 +175,7 @@
   font-weight: bold;
   cursor: pointer;
   text-transform: uppercase;
-  margin-bottom: 0; /* Remove bottom margin */
+  margin-bottom: 0;
 }
 
 .mr-10 {
@@ -184,3 +185,48 @@
 .d-flex {
   display: flex;
 }
+
+/* Responsive Styles for 576px and below */
+// @media (max-width: 576px) {
+//   .form-inline {
+//     flex-direction: column;
+//     align-items: stretch;
+//   }
+  
+//   .form-inline .input-group, .form-inline .btn {
+//     width: 100%;
+//   }
+
+//   .form-inline .input-group .form-control, 
+//   .form-inline .btn {
+//     width: 100%;
+//     margin-top: 10px;
+//   }
+
+//   .form-inline .btn {
+//     margin-left: 0;
+//   }
+
+//   .user-table th, .user-table td {
+//     padding: 0.5rem;
+//     font-size: 16px;
+//   }
+
+//   .user-table tbody tr .category-select {
+//     max-width: 100px;
+//     // overflow-y: auto;
+//   }
+
+//   .input-group2 .form-control {
+//     width: 100%;
+//   }
+
+//   .button {
+//     width: 100%;
+//     margin-bottom: 10px;
+//   }
+
+//   .card-title {
+//     font-size: 18px;
+//   }
+// }
